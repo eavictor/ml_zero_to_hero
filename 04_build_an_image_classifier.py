@@ -67,9 +67,14 @@ def main():
 
     model.compile(optimizer="rmsprop", loss=tf.keras.losses.categorical_crossentropy, metrics=["accuracy"])
 
+    filepath = "04_epoch{epoch:02d}_loss{loss:.4f}_acc{acc:.4f}_val-loss{val_loss:.4f}_val-acc{val_acc:.4f}.h5"
+    checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=filepath, monitor="val_loss", verbose=1,
+                                                    save_best_only=False, mode="auto")
+
     model.fit_generator(train_generator, epochs=25,
                         validation_data=validation_generator,
-                        verbose=1, use_multiprocessing=True, workers=16)
+                        verbose=1, use_multiprocessing=True, workers=16,
+                        callbacks=[checkpoint])
     model.save("04_build_an_image_classifier.h5")
 
 
