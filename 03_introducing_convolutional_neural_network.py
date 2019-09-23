@@ -13,16 +13,14 @@ test_images = test_images/255
 model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation=tf.nn.relu, input_shape=(28, 28, 1)),
     tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
-    tf.keras.layers.Dropout(rate=0.1),
 
     tf.keras.layers.Conv2D(filters=64, kernel_size=(3, 3), activation=tf.nn.relu),
     tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
-    tf.keras.layers.Dropout(rate=0.2),
 
     tf.keras.layers.Flatten(input_shape=(28, 28)),
 
     tf.keras.layers.Dense(units=128, activation=tf.nn.relu),
-
+    tf.keras.layers.Dropout(rate=0.2),
     tf.keras.layers.Dense(units=10, activation=tf.nn.softmax)
 ])
 

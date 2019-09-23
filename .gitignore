@@ -218,3 +218,7 @@ fabric.properties
 #   git rm -r .ipynb_checkpoints/
 #
 
+rps.zip
+rps/
+rps-test-set.zip
+rps-test-set/
